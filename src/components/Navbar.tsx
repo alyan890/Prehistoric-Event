@@ -1,89 +1,129 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { ChevronDown, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isEventsOpen, setIsEventsOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState('');
+  const eventsMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const syncHash = () => setActiveHash(window.location.hash);
+    syncHash();
+    window.addEventListener('hashchange', syncHash);
+    return () => window.removeEventListener('hashchange', syncHash);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (eventsMenuRef.current && !eventsMenuRef.current.contains(event.target as Node)) {
+        setIsEventsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const isActiveLink = (href: string) => {
+    if (href.includes('#')) {
+      const [pathPart, hashPart] = href.split('#');
+      const normalizedPath = pathPart || '/';
+      return pathname === normalizedPath && activeHash === `#${hashPart}`;
+    }
+
+    if (href === '/') {
+      return pathname === '/' && activeHash === '';
+    }
+
+    return pathname === href;
+  };
+
+  const navLinkClass = (href: string) =>
+    `nav-link transition ${isActiveLink(href) ? 'nav-link-active' : ''}`;
+
+  const eventsActive = pathname === '/' && activeHash === '#packages';
 
   return (
-    <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-amber-900/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full flex items-center justify-center">
-              <span className="text-black font-bold text-lg">V</span>
-            </div>
-            <span className="text-white font-bold text-lg hidden sm:inline-block group-hover:text-amber-400 transition">
-              Velociraptor
-            </span>
+    <nav className="sticky top-0 z-50 navbar-surface overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
+        <div className="flex justify-between items-center h-16 overflow-visible">
+          <Link href="/" className="relative flex items-center space-x-2 group overflow-visible pl-1">
+            <img
+              src="/WhatsApp_Image_2026-03-11_at_10.04.03_PM-removebg-preview.png"
+              alt="Prehistoric Events logo"
+              className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 object-cover scale-125 top-3 sm:top-4 lg:top-5 drop-shadow-[0_10px_16px_rgba(0,0,0,0.58)]"
+            />
+            <span className="text-white font-black text-3xl lg:text-4xl hidden sm:inline-block drop-shadow-[0_3px_6px_rgba(0,0,0,0.45)]">Prehistoric Events</span>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-amber-400 transition duration-300">
-              Home
-            </Link>
-            <Link href="/gallery" className="text-white hover:text-amber-400 transition duration-300">
-              Gallery
-            </Link>
-            <div className="relative group">
-              <button className="text-white hover:text-amber-400 transition duration-300 flex items-center">
-                More
-                <span className="ml-1">▼</span>
+          <div className="hidden md:flex items-center gap-6 relative z-20">
+            <Link href="/" className={navLinkClass('/')} onClick={() => setActiveHash('')}>Home</Link>
+            <Link href="/#gallery" className={navLinkClass('/#gallery')} onClick={() => setActiveHash('#gallery')}>Gallery</Link>
+            <Link href="/#videos" className={navLinkClass('/#videos')} onClick={() => setActiveHash('#videos')}>Videos</Link>
+            <Link href="/#vendors" className={navLinkClass('/#vendors')} onClick={() => setActiveHash('#vendors')}>Vendors</Link>
+            <Link href="/#meet-greet" className={navLinkClass('/#meet-greet')} onClick={() => setActiveHash('#meet-greet')}>Meet &amp; Greet</Link>
+
+            <div
+              className="relative"
+              onMouseEnter={() => setIsEventsOpen(true)}
+              onMouseLeave={() => setIsEventsOpen(false)}
+              ref={eventsMenuRef}
+            >
+              <button
+                className={`nav-link inline-flex items-center gap-1 transition ${eventsActive || isEventsOpen ? 'nav-link-active' : ''}`}
+                onClick={() => setIsEventsOpen((prev) => !prev)}
+                aria-expanded={isEventsOpen}
+                aria-haspopup="menu"
+                type="button"
+              >
+                Events
+                <ChevronDown size={16} />
               </button>
-              <div className="absolute left-0 mt-2 w-48 bg-black border border-amber-900/50 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
-                <Link href="#videos" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10">
-                  Videos
-                </Link>
-                <Link href="#vendors" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10">
-                  Vendors
-                </Link>
-                <Link href="#meet-greet" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10">
-                  Meet & Greet
-                </Link>
+              <div
+                className={`events-dropdown absolute right-0 top-full mt-1 w-56 rounded shadow-lg transition-all duration-150 ${
+                  isEventsOpen ? 'opacity-100 visible translate-y-0 pointer-events-auto' : 'opacity-0 invisible -translate-y-1 pointer-events-none'
+                }`}
+              >
+                <Link href="/#packages" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => { setIsEventsOpen(false); setActiveHash('#packages'); }}>Party Packages</Link>
+                <Link href="/booking" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => setIsEventsOpen(false)}>Birthday Parties</Link>
+                <Link href="/booking" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => setIsEventsOpen(false)}>Corporate Events</Link>
+                <Link href="/booking" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => setIsEventsOpen(false)}>School Events</Link>
               </div>
             </div>
+
             <Link
               href="/booking"
-              className="bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold px-6 py-2 rounded-lg hover:from-amber-400 hover:to-amber-500 transition duration-300"
+              className="btn-orange px-5 py-2"
             >
               Book Event
             </Link>
           </div>
 
-          {/* Mobile Menu Icon */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-amber-400 transition"
+            className="md:hidden text-white"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden pb-4 space-y-2">
-            <Link href="/" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10 rounded">
-              Home
-            </Link>
-            <Link href="/gallery" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10 rounded">
-              Gallery
-            </Link>
-            <Link href="#videos" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10 rounded">
-              Videos
-            </Link>
-            <Link href="#vendors" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10 rounded">
-              Vendors
-            </Link>
-            <Link href="#meet-greet" className="block px-4 py-2 text-white hover:text-amber-400 hover:bg-amber-900/10 rounded">
-              Meet & Greet
-            </Link>
+            <Link href="/" className={`block px-4 py-2 ${navLinkClass('/')}`} onClick={() => setActiveHash('')}>Home</Link>
+            <Link href="/#gallery" className={`block px-4 py-2 ${navLinkClass('/#gallery')}`} onClick={() => setActiveHash('#gallery')}>Gallery</Link>
+            <Link href="/#videos" className={`block px-4 py-2 ${navLinkClass('/#videos')}`} onClick={() => setActiveHash('#videos')}>Videos</Link>
+            <Link href="/#vendors" className={`block px-4 py-2 ${navLinkClass('/#vendors')}`} onClick={() => setActiveHash('#vendors')}>Vendors</Link>
+            <Link href="/#meet-greet" className={`block px-4 py-2 ${navLinkClass('/#meet-greet')}`} onClick={() => setActiveHash('#meet-greet')}>Meet &amp; Greet</Link>
+            <Link href="/#packages" className={`block px-4 py-2 ${navLinkClass('/#packages')}`} onClick={() => setActiveHash('#packages')}>Party Packages</Link>
             <Link
               href="/booking"
-              className="block bg-gradient-to-r from-amber-500 to-amber-600 text-black font-semibold px-4 py-2 rounded text-center hover:from-amber-400 hover:to-amber-500 transition"
+              className="block btn-orange text-center"
             >
               Book Event
             </Link>
