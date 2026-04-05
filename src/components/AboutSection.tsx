@@ -32,16 +32,6 @@ export default function AboutSection() {
               <p>It's a prehistoric experience.</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/88 border border-black/15 p-4 rounded-lg shadow-md">
-                <p className="text-dino-orange font-bold text-2xl">100%</p>
-                <p className="text-gray-700">Safe &amp; Fun</p>
-              </div>
-              <div className="bg-white/88 border border-black/15 p-4 rounded-lg shadow-md">
-                <p className="text-dino-olive font-bold text-2xl">13ft</p>
-                <p className="text-gray-700">Animatronic Raptor</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

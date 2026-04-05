@@ -56,15 +56,15 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center text-dino-tan text-sm">
                 <Phone size={16} className="mr-2 text-dino-gold" />
-                <span>(123) 456-7890</span>
+                <a href="tel:2394906949" className="hover:text-white transition">239-490-6949</a>
               </div>
               <div className="flex items-center text-dino-tan text-sm">
                 <Mail size={16} className="mr-2 text-dino-gold" />
-                <span>info@prehistoric.com</span>
+                <a href="mailto:Prehistoricpartiesandevents@gmail.com" className="hover:text-white transition">Prehistoricpartiesandevents@gmail.com</a>
               </div>
               <div className="flex items-start text-dino-tan text-sm">
                 <MapPin size={16} className="mr-2 mt-1 text-dino-gold shrink-0" />
-                <span>Adventure Valley, USA</span>
+                <span>Fort Myers, FL</span>
               </div>
             </div>
           </div>

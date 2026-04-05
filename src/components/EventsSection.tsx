@@ -8,7 +8,7 @@ export default function EventsSection() {
       icon: Cake,
       title: 'Dinosaur Birthday Parties',
       description: 'Make birthdays ROAR! Dino encounters & entertainment.',
-      image: '/Capture3.PNG',
+      image: '/Capture.PNG',
     },
     {
       icon: BookOpen,
@@ -49,7 +49,7 @@ export default function EventsSection() {
                 <img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-36 object-cover rounded-md border border-black/15 mb-4"
+                  className="w-full h-auto max-h-56 object-contain object-center sm:h-36 sm:max-h-none sm:object-cover rounded-md border border-black/15 mb-4 bg-[#efe2c9] p-2"
                 />
                 <Icon className="w-10 h-10 text-[#3a2c1d] mb-3" />
                 <h3 className="text-lg font-bold text-[#2f2418] mb-2">{event.title}</h3>
