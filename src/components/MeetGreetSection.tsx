@@ -9,18 +9,21 @@ export default function MeetGreetSection() {
       date: 'March 15, 2026',
       time: '2:00 PM - 5:00 PM',
       description: 'Free public meet and greet event',
+      image: '/Capture11.PNG',
     },
     {
       location: 'Jurassic Park Museum',
       date: 'March 22, 2026',
       time: '11:00 AM - 3:00 PM',
       description: 'Indoor exhibition event',
+      image: '/Capture12.PNG',
     },
     {
       location: 'Community Street Fair',
       date: 'April 5, 2026',
       time: '10:00 AM - 6:00 PM',
       description: 'Outdoor carnival event',
+      image: '/Capture13.PNG',
     },
   ];
 
@@ -38,6 +41,12 @@ export default function MeetGreetSection() {
               key={event.location}
               className="group bg-black/22 backdrop-blur-[1px] border border-white/20 rounded-lg p-8 shadow-xl"
             >
+              <img
+                src={event.image}
+                alt={event.location}
+                className="w-full h-40 object-cover rounded-md border border-white/25 mb-5"
+              />
+
               <div className="flex items-start mb-4">
                 <MapPin className="text-dino-gold mr-3 shrink-0 mt-1" size={20} />
                 <h3 className="text-xl font-bold text-white">{event.location}</h3>

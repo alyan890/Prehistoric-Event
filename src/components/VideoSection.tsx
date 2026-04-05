@@ -12,7 +12,10 @@ export default function VideoSection() {
         </div>
 
         <div className="relative overflow-hidden rounded-lg aspect-video bg-black/30 border border-white/20">
-          <div className="w-full h-full flex items-center justify-center relative bg-[radial-gradient(circle_at_center,_#5f6d4a,_#3d3d2e)]">
+          <div
+            className="w-full h-full flex items-center justify-center relative bg-cover bg-center"
+            style={{ backgroundImage: "linear-gradient(rgba(10, 10, 8, 0.45), rgba(10, 10, 8, 0.45)), url('/Capture14.PNG')" }}
+          >
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-20 h-20 bg-dino-orange rounded-full mb-4 hover:bg-orange-700 transition cursor-pointer group">
                 <Play size={40} className="text-white ml-1 group-hover:scale-110 transition" />

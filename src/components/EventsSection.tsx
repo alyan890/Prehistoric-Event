@@ -8,21 +8,25 @@ export default function EventsSection() {
       icon: Cake,
       title: 'Dinosaur Birthday Parties',
       description: 'Make birthdays ROAR! Dino encounters & entertainment.',
+      image: '/Capture3.PNG',
     },
     {
       icon: BookOpen,
       title: 'School & Educational Events',
       description: 'Interactive prehistoric learning and photo opportunities.',
+      image: '/Capture4.PNG',
     },
     {
       icon: Music,
       title: 'Festivals & Community Events',
       description: 'Admirable & Fun. Crowd-drawing dinosaur entertainment.',
+      image: '/Capture5.PNG',
     },
     {
       icon: Briefcase,
       title: 'Corporate Events',
       description: 'Impress with unforgettable branded dinosaur experiences.',
+      image: '/Capture6.PNG',
     },
   ];
 
@@ -42,6 +46,11 @@ export default function EventsSection() {
                 key={event.title}
                 className="bg-[#f5ead8]/95 border border-[#5c4a31]/30 rounded-lg p-6 hover:-translate-y-1 transition shadow-lg hover:shadow-xl"
               >
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-36 object-cover rounded-md border border-black/15 mb-4"
+                />
                 <Icon className="w-10 h-10 text-[#3a2c1d] mb-3" />
                 <h3 className="text-lg font-bold text-[#2f2418] mb-2">{event.title}</h3>
                 <p className="text-[#4a3b28] text-sm">{event.description}</p>

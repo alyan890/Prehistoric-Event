@@ -22,7 +22,7 @@ export default function VendorsSection() {
           {vendors.map((vendor) => (
             <div
               key={vendor.name}
-              className="group bg-white/20 backdrop-blur-[2px] border border-dino-tan/30 rounded-lg p-8 hover:-translate-y-1 transition shadow-lg hover:shadow-2xl"
+              className="group rounded-xl p-8 border border-white/35 bg-linear-to-br from-white/24 via-white/16 to-white/10 backdrop-blur-md shadow-[0_10px_28px_rgba(0,0,0,0.28)] ring-1 ring-white/20 hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(0,0,0,0.35)] transition"
             >
               <div className="w-16 h-16 bg-dino-olive rounded-lg flex items-center justify-center mb-4 text-white font-bold">
                 VP
@@ -34,7 +34,7 @@ export default function VendorsSection() {
           ))}
         </div>
 
-        <div className="bg-dino-dark rounded-lg p-8 text-center border border-black/30 shadow-2xl ring-1 ring-dino-tan/20">
+        <div className="rounded-xl p-8 text-center border border-white/30 bg-linear-to-br from-black/45 via-black/35 to-black/25 backdrop-blur-md shadow-2xl ring-1 ring-white/20">
           <h3 className="text-2xl font-bold text-white mb-4">Interested in Partnering?</h3>
           <p className="text-dino-tan mb-6">Help us bring spectacular events to our clients.</p>
           <button className="btn-orange">

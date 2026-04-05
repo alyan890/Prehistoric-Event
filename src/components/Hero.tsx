@@ -16,8 +16,7 @@ export default function Hero() {
         <h1
           className={`hero-title transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
-          Step Into the
-          <span className="block">Prehistoric Adventure!</span>
+          We will make your Party go down in History
         </h1>
 
         <p

@@ -7,28 +7,29 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative overflow-hidden rounded-lg border-4 border-black/20 shadow-2xl ring-1 ring-white/25">
             <img
-              src="/d9889b3d0494e568666622affc72b514.jpg"
+              src="/Capture2.PNG"
               alt="Animatronic Raptor"
               className="w-full aspect-square object-cover object-top"
             />
           </div>
 
           <div className="rounded-2xl border border-white/15 bg-[#2d2117]/58 p-6 shadow-2xl backdrop-blur-[2px] md:p-8">
-            <h2 className="section-title text-left! mb-6!">Welcome to Prehistoric Parties and Events</h2>
-
             <div className="section-copy space-y-4 text-lg mb-8">
               <p>
-                At Prehistoric Parties and Events, we bring the dinosaur world to life! Our interactive dinosaur experiences are
-                designed to create unforgettable memories for children and families.
+                Prehistoric Parties &amp; Events brings dinosaurs to life through realistic, interactive experiences that turn ordinary gatherings into unforgettable memories.
               </p>
 
               <p>
-                From birthday parties and school events to festivals and private celebrations, our realistic dinosaur encounters turn every event into a prehistoric adventure. Our trained dinosaur handlers and lifelike dinosaurs create a fun, safe, and exciting environment where kids can learn, laugh, and explore the age of dinosaurs.
+                We specialize in lifelike dinosaur appearances for birthday parties, school events, festivals, and special occasions. Every experience is handled by trained professionals, ensuring safe, engaging, and exciting interaction for guests of all ages.
               </p>
 
               <p>
-                Whether it's a thrilling encounter, an educational experience, or simply an unforgettable party highlight, we deliver authentic prehistoric entertainment that guests talk about for years to come.
+                This isn't just a costume - it's an immersive prehistoric experience designed to wow crowds, spark imagination, and create moments people will never forget.
               </p>
+
+              <p>More than entertainment.</p>
+
+              <p>It's a prehistoric experience.</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">

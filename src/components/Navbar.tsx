@@ -53,13 +53,12 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 navbar-surface overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div className="flex justify-between items-center h-16 overflow-visible">
-          <Link href="/" className="relative flex items-center space-x-2 group overflow-visible pl-1">
+          <Link href="/" className="relative flex items-center group overflow-visible pl-1">
             <img
               src="/WhatsApp_Image_2026-03-11_at_10.04.03_PM-removebg-preview.png"
               alt="Prehistoric Events logo"
               className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 object-cover scale-125 top-3 sm:top-4 lg:top-5 drop-shadow-[0_10px_16px_rgba(0,0,0,0.58)]"
             />
-            <span className="text-white font-black text-3xl lg:text-4xl hidden sm:inline-block drop-shadow-[0_3px_6px_rgba(0,0,0,0.45)]">Prehistoric Events</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6 relative z-20">

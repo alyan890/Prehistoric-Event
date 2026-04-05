@@ -5,8 +5,7 @@ export default function BookingPage() {
     <main className="section-light py-0!">
       <section className="section-dark px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h1 className="section-title">Book Your Jurassic Event</h1>
-          <p className="text-dino-tan text-center text-lg">Reserve our 13ft animatronic Velociraptor for your celebration.</p>
+          <h1 className="section-title">More than entertainment, it's a Prehistoric Experience</h1>
         </div>
       </section>
 
