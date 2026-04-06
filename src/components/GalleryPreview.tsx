@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { BLUR_DATA_URL } from '@/lib/image';
 
 export default function GalleryPreview() {
   const images = [
@@ -119,9 +121,15 @@ export default function GalleryPreview() {
             {images.map((image) => (
               <div key={image.id} className="min-w-full">
                 <div className="relative aspect-video sm:aspect-video">
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.title}
+                    fill
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
+                    quality={72}
+                    sizes="(max-width: 768px) 100vw, 1280px"
                     className="w-full h-full object-cover"
                   />
 
@@ -170,9 +178,16 @@ export default function GalleryPreview() {
               }`}
               aria-label={`Go to slide ${index + 1}`}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={`Thumbnail ${index + 1}`}
+                width={240}
+                height={160}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                quality={60}
+                sizes="(max-width: 640px) 25vw, (max-width: 1024px) 14vw, 10vw"
                 className="w-full h-16 sm:h-20 object-cover"
               />
             </button>

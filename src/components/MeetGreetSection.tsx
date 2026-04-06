@@ -1,6 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { MapPin, Calendar } from 'lucide-react';
+import { BLUR_DATA_URL } from '@/lib/image';
 
 export default function MeetGreetSection() {
   const appearances = [
@@ -41,9 +43,16 @@ export default function MeetGreetSection() {
               key={event.location}
               className="group bg-black/22 backdrop-blur-[1px] border border-white/20 rounded-lg p-8 shadow-xl"
             >
-              <img
+              <Image
                 src={event.image}
                 alt={event.location}
+                width={900}
+                height={600}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                quality={70}
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="w-full h-40 object-cover rounded-md border border-white/25 mb-5"
               />
 

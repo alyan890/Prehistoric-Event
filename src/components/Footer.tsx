@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { BLUR_DATA_URL } from '@/lib/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,9 +12,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img
+              <Image
                 src="/WhatsApp_Image_2026-03-11_at_10.04.03_PM-removebg-preview.png"
                 alt="Prehistoric Parties logo"
+                width={32}
+                height={32}
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
+                quality={65}
+                sizes="32px"
                 className="w-8 h-8 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.45)]"
               />
               <span className="text-white font-bold">Prehistoric Parties</span>

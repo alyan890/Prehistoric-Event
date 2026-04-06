@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { BLUR_DATA_URL } from '@/lib/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -54,9 +56,16 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-visible">
         <div className="flex justify-between items-center h-16 overflow-visible">
           <Link href="/" className="relative flex items-center group overflow-visible pl-1">
-            <img
+            <Image
               src="/WhatsApp_Image_2026-03-11_at_10.04.03_PM-removebg-preview.png"
               alt="Prehistoric Events logo"
+              width={128}
+              height={128}
+              loading="lazy"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+              quality={70}
+              sizes="(max-width: 640px) 96px, (max-width: 1024px) 112px, 128px"
               className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 object-cover scale-125 top-3 sm:top-4 lg:top-5 drop-shadow-[0_10px_16px_rgba(0,0,0,0.58)]"
             />
           </Link>

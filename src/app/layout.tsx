@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
+import { HERO_BG_IMAGE } from "@/lib/image";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -37,6 +38,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <link rel="preload" as="image" href={HERO_BG_IMAGE} fetchPriority="high" />
+        <link
+          rel="preload"
+          as="image"
+          href="/WhatsApp_Image_2026-03-11_at_10.04.03_PM-removebg-preview.png"
+        />
+      </head>
       <body className={`${cinzel.variable} ${alegreya.variable} bg-dino-tan text-gray-800 overflow-x-hidden`}>
         <Navbar />
         {children}
