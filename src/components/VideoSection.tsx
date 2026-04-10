@@ -1,7 +1,5 @@
 'use client';
 
-import { Play } from 'lucide-react';
-
 export default function VideoSection() {
   return (
     <section id="videos" className="section-dark px-4 sm:px-6 lg:px-8">
@@ -12,17 +10,17 @@ export default function VideoSection() {
         </div>
 
         <div className="relative overflow-hidden rounded-lg aspect-video bg-black/30 border border-white/20">
-          <div
-            className="w-full h-full flex items-center justify-center relative bg-cover bg-center"
-            style={{ backgroundImage: "linear-gradient(rgba(10, 10, 8, 0.45), rgba(10, 10, 8, 0.45)), url('/Capture14.PNG')" }}
+          <video
+            className="w-full h-full object-cover"
+            controls
+            loop
+            muted
+            autoPlay
+            playsInline
           >
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-dino-orange rounded-full mb-4 hover:bg-orange-700 transition cursor-pointer group">
-                <Play size={40} className="text-white ml-1 group-hover:scale-110 transition" />
-              </div>
-              <p className="text-dino-tan">Click to play video</p>
-            </div>
-          </div>
+            <source src="/Marta%20Raptor%20Video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
