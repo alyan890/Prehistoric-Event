@@ -8,19 +8,64 @@ export default function BookingForm() {
     email: '',
     phone: '',
     date: '',
+    eventLocation: '',
     eventType: '',
     package: '',
     guests: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Thank you! We will be in touch within 24 hours.');
+
+    try {
+      setIsSubmitting(true);
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        eventDate: formData.date,
+        eventLocation: formData.eventLocation,
+        eventType: formData.eventType,
+        message: `Package: ${formData.package || 'N/A'}\nGuests: ${formData.guests || 'N/A'}\nNotes: ${formData.message || 'N/A'}`,
+      };
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        alert(errorData.error || 'Failed to submit booking request. Please try again.');
+        return;
+      }
+
+      alert('Thank you! We will be in touch within 24 hours.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        eventLocation: '',
+        eventType: '',
+        package: '',
+        guests: '',
+        message: '',
+      });
+    } catch {
+      alert('Failed to submit booking request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -76,6 +121,19 @@ export default function BookingForm() {
       </div>
 
       <div className="form-group">
+        <label className="block text-gray-700 font-semibold mb-1">Event Location</label>
+        <input
+          type="text"
+          name="eventLocation"
+          value={formData.eventLocation}
+          onChange={handleChange}
+          placeholder="City / Venue"
+          required
+          className="form-input"
+        />
+      </div>
+
+      <div className="form-group">
         <label className="block text-gray-700 font-semibold mb-1">Event Type</label>
         <select name="eventType" value={formData.eventType} onChange={handleChange} required className="form-input">
           <option value="">Select event type</option>
@@ -122,8 +180,8 @@ export default function BookingForm() {
         />
       </div>
 
-      <button type="submit" className="btn-booking">
-        Submit Booking Request
+      <button type="submit" className="btn-booking" disabled={isSubmitting}>
+        {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
       </button>
     </form>
   );
