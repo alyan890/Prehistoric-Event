@@ -34,12 +34,12 @@ export default function AboutSection() {
               </p>
 
               <p>
-                This isn't just a costume - it's an immersive prehistoric experience designed to wow crowds, spark imagination, and create moments people will never forget.
+                This isn&apos;t just a costume - it&apos;s an immersive prehistoric experience designed to wow crowds, spark imagination, and create moments people will never forget.
               </p>
 
               <p>More than entertainment.</p>
 
-              <p>It's a prehistoric experience.</p>
+              <p>It&apos;s a prehistoric experience.</p>
             </div>
 
           </div>

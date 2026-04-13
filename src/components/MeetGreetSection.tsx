@@ -79,7 +79,7 @@ export default function MeetGreetSection() {
         </div>
 
         <div className="mt-12 bg-black/35 border border-white/20 rounded-lg p-8 text-center shadow-2xl">
-          <h3 className="text-2xl font-bold text-white mb-4">Don't Miss Out</h3>
+          <h3 className="text-2xl font-bold text-white mb-4">Don&apos;t Miss Out</h3>
           <p className="text-dino-tan mb-6">Subscribe for upcoming appearances.</p>
           <div className="flex flex-col sm:flex-row gap-2 justify-center">
             <input

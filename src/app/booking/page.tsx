@@ -1,16 +1,29 @@
 import BookingForm from '@/components/BookingForm';
 
-export default function BookingPage() {
+type BookingPageProps = {
+  searchParams?: Promise<{ submitted?: string }>;
+};
+
+export default async function BookingPage({ searchParams }: BookingPageProps) {
+  const params = searchParams ? await searchParams : undefined;
+  const isSubmitted = params?.submitted === '1';
+
   return (
     <main className="section-light py-0!">
       <section className="section-dark px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <h1 className="section-title">More than entertainment, it's a Prehistoric Experience</h1>
+          <h1 className="section-title">More than entertainment, it&apos;s a Prehistoric Experience</h1>
         </div>
       </section>
 
       <section className="section-light px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto">
+          {isSubmitted && (
+            <div className="mb-6 rounded-lg border border-green-700/40 bg-green-100 px-4 py-3 text-green-900">
+              Thank you! Your booking request was sent successfully. We will contact you within 24 hours.
+            </div>
+          )}
+
           <div className="bg-[#efe2cc] border border-black/20 rounded-lg p-6 md:p-8">
             <BookingForm />
           </div>
@@ -18,7 +31,7 @@ export default function BookingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             <div className="bg-white/60 border border-black/20 p-6 rounded-lg">
               <h3 className="text-dino-orange font-bold text-lg mb-2">Response Time</h3>
-              <p className="text-gray-700">We'll confirm your booking within 24 hours.</p>
+              <p className="text-gray-700">We&apos;ll confirm your booking within 24 hours.</p>
             </div>
 
             <div className="bg-white/60 border border-black/20 p-6 rounded-lg">
@@ -58,7 +71,7 @@ export default function BookingPage() {
               </div>
 
               <div className="bg-white/60 border border-black/20 p-6 rounded-lg">
-                <h3 className="text-gray-800 font-semibold text-lg mb-3">What's the booking deposit?</h3>
+                <h3 className="text-gray-800 font-semibold text-lg mb-3">What&apos;s the booking deposit?</h3>
                 <p className="text-gray-700">
                   A 50% deposit is required to secure your date, with the balance due one week before your event. We accept all major payment methods.
                 </p>

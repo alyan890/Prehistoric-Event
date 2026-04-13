@@ -1,14 +1,7 @@
-'use client';
-
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+  const isLoaded = true;
 
   return (
     <section className="hero-section px-4">
