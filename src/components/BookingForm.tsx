@@ -25,27 +25,24 @@ export default function BookingForm() {
 
     try {
       setIsSubmitting(true);
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        eventDate: formData.date,
-        eventLocation: formData.eventLocation,
-        eventType: formData.eventType,
-        message: `Package: ${formData.package || 'N/A'}\nGuests: ${formData.guests || 'N/A'}\nNotes: ${formData.message || 'N/A'}`,
-      };
+      const payload = new FormData();
+      payload.append('name', formData.name);
+      payload.append('email', formData.email);
+      payload.append('phone', formData.phone);
+      payload.append('eventDate', formData.date);
+      payload.append('eventLocation', formData.eventLocation);
+      payload.append('eventType', formData.eventType);
+      payload.append('package', formData.package || 'N/A');
+      payload.append('guests', formData.guests || 'N/A');
+      payload.append('message', formData.message || 'N/A');
 
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://formspree.io/f/xaqayqed', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        body: payload,
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        alert(errorData.error || 'Failed to submit booking request. Please try again.');
+        alert('Failed to submit booking request. Please try again.');
         return;
       }
 
