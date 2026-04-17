@@ -98,7 +98,7 @@ export default function Navbar() {
                   isEventsOpen ? 'opacity-100 visible translate-y-0 pointer-events-auto' : 'opacity-0 invisible -translate-y-1 pointer-events-none'
                 }`}
               >
-                <Link href="/#packages" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => { setIsEventsOpen(false); setActiveHash('#packages'); }}>Party Packages</Link>
+                <Link href="/#packages" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => { setIsEventsOpen(false); setActiveHash('#packages'); }}>Party Package</Link>
                 <Link href="/booking" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => setIsEventsOpen(false)}>Birthday Parties</Link>
                 <Link href="/booking" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => setIsEventsOpen(false)}>Corporate Events</Link>
                 <Link href="/booking" className="events-dropdown-item block px-4 py-2 nav-link" onClick={() => setIsEventsOpen(false)}>School Events</Link>
@@ -128,7 +128,7 @@ export default function Navbar() {
             <Link href="/#videos" className={`block px-4 py-2 ${navLinkClass('/#videos')}`} onClick={() => setActiveHash('#videos')}>Videos</Link>
             <Link href="/#vendors" className={`block px-4 py-2 ${navLinkClass('/#vendors')}`} onClick={() => setActiveHash('#vendors')}>Vendors</Link>
             <Link href="/#meet-greet" className={`block px-4 py-2 ${navLinkClass('/#meet-greet')}`} onClick={() => setActiveHash('#meet-greet')}>Meet &amp; Greet</Link>
-            <Link href="/#packages" className={`block px-4 py-2 ${navLinkClass('/#packages')}`} onClick={() => setActiveHash('#packages')}>Party Packages</Link>
+            <Link href="/#packages" className={`block px-4 py-2 ${navLinkClass('/#packages')}`} onClick={() => setActiveHash('#packages')}>Party Package</Link>
             <Link
               href="/booking"
               className="block btn-orange text-center"

@@ -80,7 +80,7 @@ export default async function BookingPage({ searchParams }: BookingPageProps) {
               <div className="bg-white/60 border border-black/20 p-6 rounded-lg">
                 <h3 className="text-gray-800 font-semibold text-lg mb-3">Can we customize the appearance?</h3>
                 <p className="text-gray-700">
-                  Yes! We offer various package options including meet & greet sessions, entrance performances, and photo opportunities. Contact us to discuss your vision.
+                  Yes! The package includes meet & greet moments, entrance performances, and photo opportunities. Contact us to discuss add-ons and your vision.
                 </p>
               </div>
             </div>

@@ -9,7 +9,7 @@ export default function Hero() {
         <h1
           className={`hero-title transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
-          We will make your Party go down in History
+          Will make your Party go down in History
         </h1>
 
         <p
@@ -23,7 +23,7 @@ export default function Hero() {
             Book a Party
           </Link>
           <Link href="/#packages" className="btn-green text-center">
-            View Packages
+            View Package
           </Link>
         </div>
       </div>

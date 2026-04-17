@@ -70,10 +70,7 @@ export default function BookingForm() {
       <div className="form-group">
         <label className="block text-gray-700 font-semibold mb-1">Package</label>
         <select name="package" required className="form-input">
-          <option value="">Select a package</option>
-          <option value="basic">Basic Dino Visit</option>
-          <option value="deluxe">Deluxe Dino Party</option>
-          <option value="ultimate">Ultimate Prehistoric Experience</option>
+          <option value="velociraptor-adventure">Velociraptor Adventure Package</option>
         </select>
       </div>
 
