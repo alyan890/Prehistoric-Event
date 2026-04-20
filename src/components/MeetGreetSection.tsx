@@ -91,6 +91,16 @@ export default function MeetGreetSection() {
               Subscribe
             </button>
           </div>
+          <div className="mt-5">
+            <a
+              href="https://share.google/6dGnL2RX3VGGyLwXk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-green inline-block"
+            >
+              Leave a Google Review
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -75,6 +75,17 @@ export default function Footer() {
                 <MapPin size={16} className="mr-2 mt-1 text-dino-gold shrink-0" />
                 <span>Fort Myers, FL</span>
               </div>
+              <div className="text-dino-tan text-sm pt-2">
+                Please leave us a review:{' '}
+                <a
+                  href="https://share.google/6dGnL2RX3VGGyLwXk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-dino-gold hover:text-white underline underline-offset-2 transition"
+                >
+                  Google Reviews
+                </a>
+              </div>
             </div>
           </div>
         </div>
