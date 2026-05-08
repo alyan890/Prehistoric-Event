@@ -5,6 +5,7 @@ import GalleryPreview from '@/components/GalleryPreview';
 import VideoSection from '@/components/VideoSection';
 import VendorsSection from '@/components/VendorsSection';
 import MeetGreetSection from '@/components/MeetGreetSection';
+import PricingSection from '@/components/PricingSection';
 import BookingCTA from '@/components/BookingCTA';
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="hero-about-divider" aria-hidden="true" />
       <AboutSection />
       <EventsSection />
+      <PricingSection />
       <GalleryPreview />
       <VideoSection />
       <VendorsSection />
